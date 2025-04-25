@@ -3,76 +3,428 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="50501 Movement - 50 Protests. 50 States. 1 Movement." />
   <title>50501 Movement</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QTWKL8QK9G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QTWKL8QK9G');
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="canonical" href="https://www.50501movement.online" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    html, body {
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --primary-color: #ff0000;
+      --secondary-color: #1a1a1a;
+      --text-color: #ffffff;
+      --background-color: #000000;
+      --accent-color: #ff4d4d;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.8;
+      font-size: 18px;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      position: relative;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60vh;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      position: relative;
+      min-height: 60vh;
+      border-bottom: 3px solid var(--primary-color);
+    }
+    
+    header h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    header p {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: bold;
+    }
+    
+    nav {
+      background-color: var(--secondary-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--primary-color);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+    
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1.2rem;
+    }
+    
+    nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    section {
+      padding: 4rem 0;
+      border-bottom: 2px solid var(--primary-color);
+    }
+    
+    .section-title {
+      color: var(--primary-color);
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .content {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+    
+    .content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border: 2px solid var(--primary-color);
+    }
+    
+    .cta-button:hover {
+      background-color: transparent;
+      color: var(--primary-color);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-links a {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    footer {
+      background-color: var(--background-color);
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 2px solid var(--primary-color);
+    }
+    
+    .copyright {
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+    
+    .counter-container {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin: 3rem 0;
+    }
+    
+    .counter {
+      text-align: center;
+    }
+    
+    .counter-number {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .counter-label {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul li {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+    
+    ul li:before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      header p {
+        font-size: 1.5rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .counter-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .counter-number {
+        font-size: 3rem;
+      }
+    }
+    
+    .like-message {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      font-weight: bold;
+      min-height: 2rem;
+    }
+    
+    .cta-button:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+      border-color: #666;
+    }
+    
+    .cta-button:disabled:hover {
+      background-color: #666;
+      color: var(--text-color);
     }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-gray-800">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">50 Protests. 50 States. 1 Movement.</h1>
-    <p class="text-lg md:text-xl mb-6">Uphold the Constitution. End Executive Overreach.</p>
-    <div class="flex gap-4">
-      <a href="#support" class="bg-white text-black px-6 py-2 rounded-full font-semibold">Join Now</a>
-      <a href="#events" class="border border-white px-6 py-2 rounded-full font-semibold">View Events</a>
+<body>
+  <header>
+    <img src="assets/images/protest-hero.jpg" alt="Protest Image" class="hero-image">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>50501 Movement</h1>
+        <p>50 Protests. 50 States. 1 Movement.</p>
+        <a href="#about" class="cta-button">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container nav-container">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#involved">Get Involved</a>
+        <a href="#support">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About the Movement</h2>
+      <div class="content">
+        <p>
+          The 50501 Movement is a grassroots resistance effort against authoritarianism and injustice. We demand the restoration of democratic values, protection of marginalized communities, and accountability for corruption.
+        </p>
+        <ul>
+          <li>Reject Trump and Vance's policies</li>
+          <li>Protect LGBTQ+ and minority rights</li>
+          <li>Reinstate DEI initiatives</li>
+          <li>Defend Ukraine and democratic allies</li>
+          <li>End misuse of power and censorship</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Mission Section -->
-  <section id="mission" class="py-20 px-6 text-center max-w-3xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-    <p class="text-lg leading-relaxed">The 50501 Movement is a peaceful movement dedicated to upholding the Constitution and opposing executive overreach through community building and nationwide protest. We believe the American working class will not stay silent while democratic institutions and civil liberties are undermined.</p>
-  </section>
-
-  <!-- Support Section -->
-  <section id="support" class="py-20 px-6 text-center bg-gray-900">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Support the Movement</h2>
-    <p class="text-lg mb-8">Click to show your support. Every voice counts.</p>
-    <div class="flex flex-col items-center gap-6">
-      <button onclick="likeSupport()" class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full text-lg font-bold">👍 Like</button>
-      <div class="text-xl">Total Supporters: <span id="supportTotal">208983</span></div>
-      <div class="text-xl">Today's Support: <span id="supportToday">3021</span></div>
+  <section id="involved">
+    <div class="container">
+      <h2 class="section-title">Get Involved</h2>
+      <div class="content">
+        <p>
+          This movement belongs to everyone. Join your local protest, amplify voices on social media, and educate your communities. Wear black, carry signs, and make your presence felt.
+        </p>
+        <p>
+          Together, we are louder. Together, we cannot be ignored.
+        </p>
+        <a href="#support" class="cta-button" style="margin-top: 1rem;">Join the Movement</a>
+      </div>
     </div>
   </section>
+
+  <section id="support">
+    <div class="container">
+      <h2 class="section-title">Daily Support</h2>
+      <div class="content">
+        <p>Every like counts as one vote. Show your support for our movement!</p>
+        <div class="counter-container">
+          <div class="counter">
+            <div class="counter-number" id="totalLikes">1,003,645</div>
+            <div class="counter-label">Total Supporters</div>
+          </div>
+          <div class="counter">
+            <div class="counter-number" id="todayLikes">5,624</div>
+            <div class="counter-label">Today's Support</div>
+          </div>
+        </div>
+        <button class="cta-button" id="likeButton" onclick="addLike()">Show Support</button>
+        <div class="like-message" id="likeMessage"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="copyright">&copy; 2025 50501 Movement. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
-    const totalEl = document.getElementById('supportTotal');
-    const todayEl = document.getElementById('supportToday');
+    // 检查用户是否已经点赞
+    function hasUserLiked() {
+      const today = new Date().toDateString();
+      const userLikes = JSON.parse(localStorage.getItem('userLikes') || '{}');
+      return userLikes[today] === true;
+    }
 
-    const todayKey = new Date().toISOString().slice(0, 10);
-    let totalCount = parseInt(localStorage.getItem('supportTotal') || '208983');
-    let todayCount = parseInt(localStorage.getItem('supportToday_' + todayKey) || '3021');
-    let liked = localStorage.getItem('likedSupport_' + todayKey);
+    // 更新点赞状态
+    function updateLikeStatus() {
+      const today = new Date().toDateString();
+      const userLikes = JSON.parse(localStorage.getItem('userLikes') || '{}');
+      userLikes[today] = true;
+      localStorage.setItem('userLikes', JSON.stringify(userLikes));
+    }
 
-    totalEl.textContent = totalCount;
-    todayEl.textContent = todayCount;
-
-    function likeSupport() {
-      if (!liked) {
-        totalCount++;
-        todayCount++;
-        totalEl.textContent = totalCount;
-        todayEl.textContent = todayCount;
-        localStorage.setItem('supportTotal', totalCount);
-        localStorage.setItem('supportToday_' + todayKey, todayCount);
-        localStorage.setItem('likedSupport_' + todayKey, 'true');
-        liked = 'true';
-      } else {
-        alert('Thanks! You already supported today.');
+    // 初始化按钮状态
+    function initLikeButton() {
+      const likeButton = document.getElementById('likeButton');
+      const likeMessage = document.getElementById('likeMessage');
+      
+      if (hasUserLiked()) {
+        likeButton.disabled = true;
+        likeButton.textContent = 'Already Supported';
+        likeMessage.textContent = 'Thank you for your support!';
       }
     }
+
+    // 添加点赞
+    function addLike() {
+      if (hasUserLiked()) {
+        return;
+      }
+
+      // 更新总支持者数
+      let totalLikes = document.getElementById('totalLikes');
+      let currentTotal = parseInt(totalLikes.textContent.replace(/,/g, ''));
+      totalLikes.textContent = (currentTotal + 1).toLocaleString();
+      
+      // 更新今日支持数
+      let todayLikes = document.getElementById('todayLikes');
+      let currentToday = parseInt(todayLikes.textContent.replace(/,/g, ''));
+      todayLikes.textContent = (currentToday + 1).toLocaleString();
+      
+      // 更新点赞状态
+      updateLikeStatus();
+      
+      // 更新按钮状态
+      const likeButton = document.getElementById('likeButton');
+      const likeMessage = document.getElementById('likeMessage');
+      likeButton.disabled = true;
+      likeButton.textContent = 'Already Supported';
+      likeMessage.textContent = 'Thank you for your support!';
+      
+      // 这里可以添加后端API调用，将数据保存到服务器
+    }
+
+    // 页面加载时初始化
+    document.addEventListener('DOMContentLoaded', initLikeButton);
   </script>
 </body>
 </html>
